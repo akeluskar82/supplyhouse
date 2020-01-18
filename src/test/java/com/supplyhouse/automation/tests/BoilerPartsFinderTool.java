@@ -24,14 +24,17 @@ public class BoilerPartsFinderTool {
 		boilerPartsPage.modelNumberSearch().sendKeys(modelNumber);
 		boilerPartsPage.boilerPartsSearchButton().click();
 
-		Assert.assertTrue(
-				"The search shows a result in which a link appears for the following model number:  " + modelNumber,
-				boilerPartsPage.doesModelNumberAppearInLink(modelNumber));
-		Assert.assertTrue(
-				"The search shows a result in which text appears for the following model number: " + modelNumber,
-				boilerPartsPage.doesModelNumberAppearInLink(modelNumber));
+		try {
+			Assert.assertTrue(
+					"The search shows a result in which a link appears for the following model number:  " + modelNumber,
+					boilerPartsPage.doesModelNumberAppearInLink(modelNumber));
+			Assert.assertTrue(
+					"The search shows a result in which text appears for the following model number: " + modelNumber,
+					boilerPartsPage.doesModelNumberAppearInText(modelNumber));
+		} finally {
+			driverUtils.closeDriver();
+		}
 
-		driverUtils.closeDriver();
 	}
 
 }

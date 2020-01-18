@@ -26,7 +26,9 @@ public class WebDriverUtils {
 	}
 
 	public void closeDriver() {
-		driver.close();
+		if (driver != null) {
+			driver.close();
+		}
 	}
 
 }
